@@ -30,6 +30,7 @@
     <jdk.min.version>11</jdk.min.version>
 
     <!-- Maven plug-ins -->
+    <version.antrun.plugin>3.1.0</version.antrun.plugin>
     <version.assembly.plugin>3.6.0</version.assembly.plugin>
     <version.clean.plugin>3.3.2</version.clean.plugin>
     <version.compiler.plugin>3.11.0</version.compiler.plugin>
@@ -49,6 +50,13 @@
   <build>
     <pluginManagement>
       <plugins>
+        <!-- Plug-in to execute Ant from within Maven (e.g. for scripts) -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>${version.antrun.plugin}</version>
+        </plugin>
+
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-assembly-plugin</artifactId>
