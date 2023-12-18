@@ -35,7 +35,7 @@
     <version.clean.plugin>3.3.2</version.clean.plugin>
     <version.compiler.plugin>3.11.0</version.compiler.plugin>
     <version.deploy.plugin>3.1.1</version.deploy.plugin>
-    <version.surefire.plugin>3.2.2</version.surefire.plugin>
+    <version.surefire.plugin>3.2.3</version.surefire.plugin>
     <version.install.plugin>3.1.1</version.install.plugin>
     <version.jar.plugin>3.3.0</version.jar.plugin>
     <version.resources.plugin>3.3.1</version.resources.plugin>
