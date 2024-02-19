@@ -44,7 +44,7 @@
     <version.jacoco.plugin>0.8.11</version.jacoco.plugin>
 
     <!-- Tycho plug-ins -->
-    <version.tycho.plugin>4.0.5</version.tycho.plugin>
+    <version.tycho.plugin>4.0.6</version.tycho.plugin>
   </properties>
 
   <build>
