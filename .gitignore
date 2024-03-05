@@ -4,3 +4,7 @@ target/
 # Eclipse 
 .project
 .classpath
+
+# IntelliJ
+**/*.iml
+**/.idea/

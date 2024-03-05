@@ -42,9 +42,13 @@
     <version.source.plugin>3.3.0</version.source.plugin>
     <version.site.plugin>3.12.1</version.site.plugin>
     <version.jacoco.plugin>0.8.11</version.jacoco.plugin>
+    <version.cyclonedx.plugin>2.7.11</version.cyclonedx.plugin>
 
     <!-- Tycho plug-ins -->
     <version.tycho.plugin>4.0.6</version.tycho.plugin>
+
+    <!-- Global properties -->
+    <cyclonedx.skip>true</cyclonedx.skip>
   </properties>
 
   <build>
@@ -134,6 +138,12 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
           <version>${version.site.plugin}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.cyclonedx</groupId>
+          <artifactId>cyclonedx-maven-plugin</artifactId>
+          <version>${version.cyclonedx.plugin}</version>
         </plugin>
 
         <plugin>
@@ -247,6 +257,31 @@
       </plugin>
 
       <plugin>
+        <groupId>org.cyclonedx</groupId>
+        <artifactId>cyclonedx-maven-plugin</artifactId>
+        <configuration>
+          <projectType>application</projectType>
+          <includeBomSerialNumber>true</includeBomSerialNumber>
+          <includeCompileScope>true</includeCompileScope>
+          <includeProvidedScope>true</includeProvidedScope>
+          <includeRuntimeScope>true</includeRuntimeScope>
+          <includeSystemScope>true</includeSystemScope>
+          <includeTestScope>true</includeTestScope>
+          <includeLicenseText>false</includeLicenseText>
+          <outputFormat>json</outputFormat>
+          <outputName>bom</outputName>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>makeAggregateBom</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-maven-plugin</artifactId>
         <extensions>true</extensions>
@@ -350,6 +385,13 @@
           </plugin>
         </plugins>
       </build>
+    </profile>
+
+    <profile>
+      <id>sbom</id>
+      <properties>
+        <cyclonedx.skip>false</cyclonedx.skip>
+      </properties>
     </profile>
 
     <!-- INFO: This profile should only be used for this very project -->
