@@ -14,27 +14,23 @@ The artifact can be consumed inside your project Maven *pom.xml* like this:
 </parent>
 ```
 
-## Building / deploying a new version
+## Maven consumption configuration
 
-To build this parent POM run the following command:
+To configure the local *./m2/settings.xml* to consume GitHub packages as a
+working Apache Maven registry, follow the official
+[GitHub documentation](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry)!
 
-> mvn clean verify install
+## Releasing a new version
 
-To deploy this parent POM to the GitHub Maven repository run the following
-command. Make sure that the GitHub server is configured in your *settings.xml*:
+To release a new version, remove the *-SNAPSHOT* from the Maven version. For
+example *1.0.0-SNAPSHOT* will become *1.0.0*. Pushing the changes will result
+in a build including the release. Use the following commit message:
+> Release v1.0.0
 
-> mvn clean verify deploy -Pdeploy
+After that create a new GitHub release from that specific commit with a new tag
+and title *v1.0.0*!
 
-Don't deploy snapshot versions other than for testing. When deploying a new
-version make sure always to remove the **-SNAPSHOT** from the version!
-
-### *settings.xml* template
-
-```xml
-<servers>
-  <server>
-    <id>github</id>
-    <username>thahnen</username>
-    <password>{GITHUB_TOKEN}</password>
-  </server>
-</servers>```
+After that increment the version and add the *-SNAPSHOT* to the Maven version.
+For example *1.0.0* will become *1.1.0-SNAPSHOT*. Pushing the changes will
+result including the bill of material. Use the following commit message:
+> Prepare next release
