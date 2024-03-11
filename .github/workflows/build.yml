@@ -1,0 +1,72 @@
+name: CI with Maven
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: JDK 17 for Maven
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+    
+    - name: Setup Maven version for Tycho compatibility
+      uses: s4u/setup-maven-action@v1.12.0
+      with:
+        java-version: 17
+        maven-version: 3.9.6
+    
+    - name: Setup Maven settings.xml for upload of released artifacts
+      uses: s4u/maven-settings-action@v3.0.0
+      with:
+        servers: |
+          [{
+            "id": "github",
+            "username": "${{ secrets.GH_USERNAME }}",
+            "password": "${{ secrets.GH_TOKEN }}"
+          }]
+    
+    - name: Get Maven project version for later
+      run: |
+        echo "MVN_PROJECT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+
+    - name: Run Maven build including CycloneDx
+      run: |
+        mvn -B -e -V clean
+        mvn -B -e -V -Psbom verify
+        mvn -B -e -V -Psbom install
+
+    - name: Upload bill of material
+      uses: actions/upload-artifact@v4
+      with:
+        name: parent-eclipse_${{ env.MVN_PROJECT_VERSION }}_${{ github.run_number }}.bom.json
+        path: target/bom.json
+    
+    - name: Upload pom.xml
+      uses: actions/upload-artifact@v4
+      with:
+        name: parent-eclipse_${{ env.MVN_PROJECT_VERSION }}_${{ github.run_number }}.pom.xml
+        path: pom.xml
+
+    - name: Release if version does not contain "-SNAPSHOT"
+      if: ${{ ! endsWith(env.MVN_PROJECT_VERSION, '-SNAPSHOT') }}
+      run: |
+        echo "Maven project version: $MVN_PROJECT_VERSION"
+        mvn -B -e -V clean verify deploy -Pdeploy
