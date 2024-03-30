@@ -33,16 +33,6 @@ jobs:
         java-version: 17
         maven-version: 3.9.6
     
-    - name: Setup Maven settings.xml for upload of released artifacts
-      uses: s4u/maven-settings-action@v3.0.0
-      with:
-        servers: |
-          [{
-            "id": "github",
-            "username": "${{ secrets.GH_USERNAME }}",
-            "password": "${{ secrets.GH_TOKEN }}"
-          }]
-    
     - name: Get Maven project version for later
       run: |
         echo "MVN_PROJECT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
@@ -64,6 +54,17 @@ jobs:
       with:
         name: parent-eclipse_${{ env.MVN_PROJECT_VERSION }}_${{ github.run_number }}.pom.xml
         path: pom.xml
+    
+    - name: Setup Maven settings.xml for upload of released artifacts
+      uses: s4u/maven-settings-action@v3.0.0
+      if: ${{ ! endsWith(env.MVN_PROJECT_VERSION, '-SNAPSHOT') }}
+      with:
+        servers: |
+          [{
+            "id": "github",
+            "username": "${{ secrets.GH_USERNAME }}",
+            "password": "${{ secrets.GH_TOKEN }}"
+          }]
 
     - name: Release if version does not contain "-SNAPSHOT"
       if: ${{ ! endsWith(env.MVN_PROJECT_VERSION, '-SNAPSHOT') }}
