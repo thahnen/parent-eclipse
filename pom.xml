@@ -56,7 +56,7 @@
     <version.tycho.plugin>4.0.7</version.tycho.plugin>
 
     <!-- Bndtools plug-ins -->
-    <version.bnd.plugin>6.4.0</version.bnd.plugin>
+    <version.bnd.plugin>7.0.0</version.bnd.plugin>
 
     <!-- Global properties -->
     <cyclonedx.skip>true</cyclonedx.skip>
