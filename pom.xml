@@ -53,7 +53,7 @@
     <version.cyclonedx.plugin>2.8.0</version.cyclonedx.plugin>
 
     <!-- Tycho plug-ins -->
-    <version.tycho.plugin>4.0.7</version.tycho.plugin>
+    <version.tycho.plugin>4.0.8</version.tycho.plugin>
 
     <!-- Bndtools plug-ins -->
     <version.bnd.plugin>7.0.0</version.bnd.plugin>
