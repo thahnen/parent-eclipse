@@ -429,7 +429,7 @@
             <version>${version.jacoco.plugin}</version>
             <configuration>
               <includes>
-                <include>com/hahnentt/eclipse/**</include>
+                <include>com/hahnentt/**</include>
               </includes>
             </configuration>
             <executions>
