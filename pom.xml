@@ -51,6 +51,7 @@
     <version.site.plugin>3.12.1</version.site.plugin>
     <version.jacoco.plugin>0.8.12</version.jacoco.plugin>
     <version.cyclonedx.plugin>2.8.0</version.cyclonedx.plugin>
+    <version.spotless.plugin>2.43.0</version.spotless.plugin>
 
     <!-- Tycho plug-ins -->
     <version.tycho.plugin>4.0.8</version.tycho.plugin>
@@ -148,6 +149,12 @@
           <groupId>org.cyclonedx</groupId>
           <artifactId>cyclonedx-maven-plugin</artifactId>
           <version>${version.cyclonedx.plugin}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>com.diffplug.spotless</groupId>
+          <artifactId>spotless-maven-plugin</artifactId>
+          <version>${version.spotless.plugin}</version>
         </plugin>
 
         <plugin>
