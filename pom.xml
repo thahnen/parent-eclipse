@@ -54,7 +54,7 @@
     <version.spotless.plugin>2.43.0</version.spotless.plugin>
 
     <!-- Tycho plug-ins -->
-    <version.tycho.plugin>4.0.8</version.tycho.plugin>
+    <version.tycho.plugin>4.0.9</version.tycho.plugin>
 
     <!-- Bndtools plug-ins -->
     <version.bnd.plugin>7.0.0</version.bnd.plugin>
