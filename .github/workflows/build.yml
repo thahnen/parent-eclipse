@@ -16,12 +16,12 @@ jobs:
     
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         fetch-depth: 0
 
     - name: JDK 17 for Maven
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v5
       with:
         java-version: '17'
         distribution: 'temurin'
@@ -29,10 +29,10 @@ jobs:
     
     # This has to be the same Maven version as ${maven.min.version} in the pom.xml!
     - name: Setup Maven version for Tycho compatibility
-      uses: s4u/setup-maven-action@v1.18.0
+      uses: s4u/setup-maven-action@v1.19.0
       with:
         java-version: 17
-        maven-version: 3.9.6
+        maven-version: 3.9.11
     
     - name: Get Maven project version for later
       run: |
@@ -57,7 +57,7 @@ jobs:
         path: pom.xml
     
     - name: Setup Maven settings.xml for upload of released artifacts
-      uses: s4u/maven-settings-action@v3.1.0
+      uses: s4u/maven-settings-action@v4
       if: ${{ ! endsWith(env.MVN_PROJECT_VERSION, '-SNAPSHOT') }}
       with:
         servers: |
