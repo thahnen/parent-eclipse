@@ -45,7 +45,7 @@
     <version.site.plugin>3.21.0</version.site.plugin>
     <version.jacoco.plugin>0.8.13</version.jacoco.plugin>
     <version.cyclonedx.plugin>2.9.1</version.cyclonedx.plugin>
-    <version.spotless.plugin>2.46.1</version.spotless.plugin>
+    <version.spotless.plugin>3.0.0</version.spotless.plugin>
 
     <!-- Tycho plug-ins -->
     <version.tycho.plugin>4.0.13</version.tycho.plugin>
