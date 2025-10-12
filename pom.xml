@@ -10,10 +10,6 @@
   <name>parent-eclipse</name>
   <description>Parent POM for Maven / Bnd / Tycho / Eclipse projects</description>
 
-  <prerequisites>
-    <maven>${maven.min.version}</maven>
-  </prerequisites>
-
   <developers>
     <developer>
       <id>thahnen</id>
@@ -31,10 +27,9 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.min.version>3.9.6</maven.min.version>
 
-    <!-- We build everything with Java 11 in order to support more targets -->
-    <jdk.min.version>11</jdk.min.version>
+    <!-- We build everything with Java 17 in order to support more targets -->
+    <jdk.min.version>17</jdk.min.version>
 
     <!-- Maven plug-ins -->
     <version.antrun.plugin>3.1.0</version.antrun.plugin>
@@ -42,7 +37,6 @@
     <version.clean.plugin>3.5.0</version.clean.plugin>
     <version.compiler.plugin>3.14.1</version.compiler.plugin>
     <version.deploy.plugin>3.1.4</version.deploy.plugin>
-    <version.enforcer.plugin>3.6.2</version.enforcer.plugin>
     <version.surefire.plugin>3.5.4</version.surefire.plugin>
     <version.install.plugin>3.1.4</version.install.plugin>
     <version.jar.plugin>3.4.2</version.jar.plugin>
@@ -95,12 +89,6 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-deploy-plugin</artifactId>
           <version>${version.deploy.plugin}</version>
-        </plugin>
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-enforcer-plugin</artifactId>
-          <version>${version.enforcer.plugin}</version>
         </plugin>
 
         <plugin>
@@ -252,28 +240,6 @@
           <target>${jdk.min.version}</target>
           <compilerVersion>${jdk.min.version}</compilerVersion>
         </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-enforcer-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>enforce-maven</id>
-            <goals>
-              <goal>enforce</goal>
-            </goals>
-            <configuration>
-              <rules>
-                <requireMavenVersion>
-                  <message>Maven ${maven.min.version} is required to build this project!
-                  </message>
-                  <version>${maven.min.version}</version>
-                </requireMavenVersion>
-              </rules>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
 
       <plugin>
