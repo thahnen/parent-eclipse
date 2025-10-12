@@ -57,7 +57,7 @@ jobs:
         path: pom.xml
     
     - name: Setup Maven settings.xml for upload of released artifacts
-      uses: s4u/maven-settings-action@v4
+      uses: s4u/maven-settings-action@v4.0.0
       if: ${{ ! endsWith(env.MVN_PROJECT_VERSION, '-SNAPSHOT') }}
       with:
         servers: |
