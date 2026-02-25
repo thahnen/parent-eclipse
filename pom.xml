@@ -8,7 +8,7 @@
   <packaging>pom</packaging>
 
   <name>parent-eclipse</name>
-  <description>Parent POM for Maven / Bnd / Tycho / Eclipse projects</description>
+  <description>Parent POM for Maven / Tycho / Eclipse projects</description>
 
   <developers>
     <developer>
@@ -49,9 +49,6 @@
 
     <!-- Tycho plug-ins -->
     <version.tycho.plugin>4.0.13</version.tycho.plugin>
-
-    <!-- Bndtools plug-ins -->
-    <version.bnd.plugin>7.2.1</version.bnd.plugin>
 
     <!-- Global properties -->
     <cyclonedx.skip>true</cyclonedx.skip>
@@ -213,20 +210,8 @@
 
         <plugin>
           <groupId>org.eclipse.tycho</groupId>
-          <artifactId>tycho-bnd-plugin</artifactId>
-          <version>${version.tycho.plugin}</version>
-        </plugin>
-
-        <plugin>
-          <groupId>org.eclipse.tycho</groupId>
           <artifactId>tycho-p2-director-plugin</artifactId>
           <version>${version.tycho.plugin}</version>
-        </plugin>
-
-        <plugin>
-          <groupId>biz.aQute.bnd</groupId>
-          <artifactId>bnd-maven-plugin</artifactId>
-          <version>${version.bnd.plugin}</version>
         </plugin>
       </plugins>
     </pluginManagement>

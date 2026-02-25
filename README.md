@@ -1,8 +1,11 @@
 # Parent POM for Maven / Tycho / Eclipse projects
 
 Parent POM for Maven to be used when developing Eclipse plug-ins / applications
-using Tycho. Plug-ins for [Bndtools](https://bndtools.org/index.html) are
-provided as well in order to create OSGi bundles.
+using Tycho.
+
+When trying to create OSGi bundles, check the plug-ins for
+[Bndtools](https://bndtools.org/index.html) that are not part of this Parent
+POM.
 
 The artifact can be consumed inside your project Maven *pom.xml* like this:
 
