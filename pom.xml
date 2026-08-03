@@ -44,7 +44,7 @@
     <version.source.plugin>3.4.0</version.source.plugin>
     <version.site.plugin>3.22.0</version.site.plugin>
     <version.jacoco.plugin>0.8.15</version.jacoco.plugin>
-    <version.cyclonedx.plugin>2.9.2</version.cyclonedx.plugin>
+    <version.cyclonedx.plugin>2.9.3</version.cyclonedx.plugin>
 
     <!-- Tycho plug-ins -->
     <version.tycho.plugin>4.0.13</version.tycho.plugin>
