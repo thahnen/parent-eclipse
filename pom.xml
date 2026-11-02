@@ -47,7 +47,7 @@
     <version.cyclonedx.plugin>2.9.3</version.cyclonedx.plugin>
 
     <!-- Tycho plug-ins -->
-    <version.tycho.plugin>4.0.13</version.tycho.plugin>
+    <version.tycho.plugin>5.0.4</version.tycho.plugin>
 
     <!-- Global properties -->
     <cyclonedx.skip>true</cyclonedx.skip>
